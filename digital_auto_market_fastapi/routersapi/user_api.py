@@ -11,7 +11,7 @@ from digital_auto_market_fastapi.utils.security.secure_authentication import aut
 
 router = APIRouter()
 
-@router.post("/token", response_model=Token)
+@router.post("/login/token", response_model=Token)
 async def login_for_access_token(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
 ):
@@ -30,13 +30,13 @@ async def login_for_access_token(
     )
     return Token(access_token=access_token, token_type="bearer")
 
-@router.get("/users/activeuser/", response_model=User)
+@router.get("/login/activeuser/", response_model=User)
 async def read_users_me(
     current_user: Annotated[User, Depends(get_current_active_user)],
 ):
     return current_user
 
-@router.get("/users/profile/purchaselist/")
+@router.get("/login/profile/purchasehistory/")
 async def read_own_items(
     current_user: Annotated[User, Depends(get_current_active_user)],
 ):
