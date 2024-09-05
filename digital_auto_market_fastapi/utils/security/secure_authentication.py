@@ -1,7 +1,9 @@
+import os
 from datetime import datetime, timedelta, timezone
 from typing import Annotated
 
 import jwt
+from dotenv import load_dotenv
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jwt.exceptions import InvalidTokenError
@@ -10,13 +12,16 @@ from pydantic import BaseModel
 
 
 
-from digital_auto_market_fastapi.routers.user_response_model import User
+from digital_auto_market_fastapi.routersapi.user_response_model import User
 from digital_auto_market_fastapi.utils.database.database_connect import SessionLocal
 from digital_auto_market_fastapi.utils.database.user_model import UserInDB
 
+# Load environment variables from .env file
+load_dotenv("/home/zermatt/Documents/python_beginner_projects/digital_auto_market_fastapi/.env")
+
 # Configuration
-SECRET_KEY = "your-secret-key"  # Store this securely
-ALGORITHM = "HS256"
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")

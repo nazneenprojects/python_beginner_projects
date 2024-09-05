@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Boolean
-from database_connect import Base
+from digital_auto_market_fastapi.utils.database.database_connect import Base
 
 class UserInDB(Base):
     __tablename__ = "users"

@@ -5,10 +5,9 @@ from fastapi import APIRouter, Depends, HTTPException, status
 
 from fastapi.security import OAuth2PasswordRequestForm
 
-from digital_auto_market_fastapi.routers.user_response_model import User
+from digital_auto_market_fastapi.routersapi.user_response_model import User
 from digital_auto_market_fastapi.utils.database.database_connect import SessionLocal
-from digital_auto_market_fastapi.utils.security.secure_authentication import authenticate_user, create_access_token, \
-    ACCESS_TOKEN_EXPIRE_MINUTES, Token, get_current_active_user
+from digital_auto_market_fastapi.utils.security.secure_authentication import authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, Token, get_current_active_user
 
 router = APIRouter()
 
@@ -31,14 +30,14 @@ async def login_for_access_token(
     )
     return Token(access_token=access_token, token_type="bearer")
 
-@router.get("/users/me/", response_model=User)
+@router.get("/users/activeuser/", response_model=User)
 async def read_users_me(
     current_user: Annotated[User, Depends(get_current_active_user)],
 ):
     return current_user
 
-@router.get("/users/me/items/")
+@router.get("/users/profile/purchaselist/")
 async def read_own_items(
     current_user: Annotated[User, Depends(get_current_active_user)],
 ):
-    return [{"item_id": "Foo", "owner": current_user.username}]
+    return [{"item_id": "Mercedes Benz 220SE Ponton Coupe 1960", "owner": current_user.username}]
