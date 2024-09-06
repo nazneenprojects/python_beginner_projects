@@ -10,8 +10,8 @@ from dotenv import load_dotenv
 load_dotenv("/home/zermatt/Documents/python_beginner_projects/digital_auto_market_fastapi/.env")
 
 # Retrieve environment variables
-db_name = "digi_auto_market"  # Ensure this is a string without trailing comma
-db_server = "finvevo-server.database.windows.net"  # Ensure this is a string without trailing comma
+db_name = os.getenv("DB_NAME")
+db_server = os.getenv("DB_SERVER")
 db_uid = os.getenv("DB_UID")
 db_pw = os.getenv("DB_PWD")
 
@@ -38,4 +38,6 @@ engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Base class for declarative models
+# Base is an instance of declarative_base() (from SQLAlchemy) that serves as a foundation for defining the ORM models (tables).
+# All models (such as User, AutoInfo, etc.) inherit from this Base class.
 Base = declarative_base()

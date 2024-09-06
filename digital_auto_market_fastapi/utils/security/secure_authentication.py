@@ -12,9 +12,9 @@ from pydantic import BaseModel
 
 
 
-from digital_auto_market_fastapi.routersapi.user_response_model import User
-from digital_auto_market_fastapi.utils.database.database_connect import SessionLocal
-from digital_auto_market_fastapi.utils.database.user_model import UserInDB
+from digital_auto_market_fastapi.routersapi.user_schema import User
+from digital_auto_market_fastapi.utils.database.database import SessionLocal
+from digital_auto_market_fastapi.utils.database.models import UserInDB
 
 # Load environment variables from .env file
 load_dotenv("/home/zermatt/Documents/python_beginner_projects/digital_auto_market_fastapi/.env")

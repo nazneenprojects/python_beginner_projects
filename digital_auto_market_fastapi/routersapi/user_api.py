@@ -5,13 +5,17 @@ from fastapi import APIRouter, Depends, HTTPException, status
 
 from fastapi.security import OAuth2PasswordRequestForm
 
-from digital_auto_market_fastapi.routersapi.user_response_model import User
-from digital_auto_market_fastapi.utils.database.database_connect import SessionLocal
+from digital_auto_market_fastapi.routersapi.user_schema import User
+from digital_auto_market_fastapi.utils.database.database import SessionLocal
 from digital_auto_market_fastapi.utils.security.secure_authentication import authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, Token, get_current_active_user
 
-router = APIRouter()
+router = APIRouter(
+    prefix="/Profile",
+    tags=["User Profile"],
+    responses={404: {"description": "Not Found"}},
+)
 
-@router.post("/login/token", response_model=Token)
+@router.post("/token", response_model=Token)
 async def login_for_access_token(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
 ):

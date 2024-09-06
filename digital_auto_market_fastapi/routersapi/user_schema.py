@@ -7,6 +7,9 @@ class User(BaseModel):
     full_name: Optional[str] = None
     disabled: Optional[bool] = None
 
+    class Config:
+        orm_mode = True
+
 class Token(BaseModel):
     access_token: str
     token_type: str
