@@ -10,7 +10,6 @@ from digital_auto_market_fastapi.utils.database.database import SessionLocal
 from digital_auto_market_fastapi.utils.security.secure_authentication import authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, Token, get_current_active_user
 
 router = APIRouter(
-    prefix="/Profile",
     tags=["User Profile"],
     responses={404: {"description": "Not Found"}},
 )
