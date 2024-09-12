@@ -7,11 +7,11 @@ app = typer.Typer(help=" CLI based CV for Nazneen Mulani")
 @app.command()
 def how_to_begin():
     print("----------------------------------------------------------------------------------")
-    print("Welcome to Nazneen's exploration journey! :")
-    print("Hope you are excited to dive in, lets begin!!!")
+    print("[yellow]Welcome to Nazneen's exploration journey! :")
+    print("[green]Hope you are excited to dive in, lets begin!!!")
     person_name = Prompt.ask("Enter your name :sunglasses:")
     print(f"[red]Hey there, {person_name}!")
-
+    print("[yellow]use different commands like <education>, <projects> ,<blogs> <hobbies> <career_journey> to know more onto specific section")
     print("..................................................................................")
 
 
