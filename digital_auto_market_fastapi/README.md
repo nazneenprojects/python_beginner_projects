@@ -23,6 +23,7 @@
 
 ## Further future plan :
   - API level documentation style and packaging with poetry
+  - unit test cases
   - Add table to save user registration data
   - add role based authentication
   - save credentiales in Azure vault
