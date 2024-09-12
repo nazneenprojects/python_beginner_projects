@@ -21,7 +21,6 @@
 ![image](https://github.com/user-attachments/assets/fd921139-5597-403c-9341-fa55f4f556a2)
 
 
-   - 
 ## Further future plan :
   - API level documentation style and packaging with poetry
   - Add table to save user registration data
