@@ -12,6 +12,7 @@ class AutoInfoBase(BaseModel):
     available: bool = Field(default=True)  # Default is True
     reserved: bool = Field(default=False)  # Default is False
     count: int = Field(default=0, example=3)  # Default count of available vehicles
+    v_id: int = Field(default=0)
 
     @validator('type')
     def validate_type(cls, v):
