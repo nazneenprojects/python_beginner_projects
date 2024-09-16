@@ -7,10 +7,6 @@ SELECT * FROM sys.database_principals WHERE name = CURRENT_USER;
 SELECT table_name, table_schema
 FROM information_schema.tables;
 
-
-
-
-
 drop table dev.v_details
 
 
@@ -141,7 +137,7 @@ CREATE TABLE dev.users (
 );
 
 Drop table dev.users;
-
+CREATE INDEX ix_users_full_name ON dev.users (full_name);
 
 INSERT INTO dbo.users (username, full_name, email, hashed_password, disabled)
 VALUES ('nazneenmulani', 'Nazneen Mulani', 'nazneenmulani@example.com', '$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW', 0);
@@ -188,7 +184,7 @@ CREATE TABLE dev.v_details (
 
 
 
- drop table dbo.auto_info
+drop table dbo.auto_info
 
 drop table dbo.v_details
 
@@ -203,15 +199,14 @@ ON DELETE CASCADE
 ALTER TABLE dev.auto_info 
     DROP CONSTRAINT FK_auto_info_v_details;
 
-select * from dev.auto_info
+select * from dbo.auto_info
 
-select * from dev.v_details
+select * from dbo.v_details
 
 
-INSERT INTO dev.v_details ( photo, history)
+INSERT INTO dbo.v_details ( photo, history)
 VALUES ( 0x1234567890ABCDEF, '{"name": "VW XZ", "manufactured": "2023", "sound_level": "low", "emission": "zero", "Tech_spec": {"engine_speed": 400.0, "torque": 450.0, "max_load": 1000.0}}');
 
-INSERT INTO dbo.auto_info (vehicle_name, vehicle_model, num_wheel, type, year, brand, price, available, reserved, count)
-VALUES ('VW camper Z', 'VW XZ', 4, 'ev', 2023, 'VW', 39990.00, 1, 0, 1);
+INSERT INTO dbo.auto_info (vehicle_name, vehicle_model, num_wheel, type, year, brand, price, available, reserved, count, v_id)
+VALUES ('VW camper Z', 'VW XZ', 4, 'ev', 2023, 'VW', 39990.00, 1, 0, 1, 1);
 
-CREATE INDEX ix_users_full_name ON dev.users (full_name);

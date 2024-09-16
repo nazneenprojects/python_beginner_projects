@@ -1,5 +1,4 @@
-from fastapi import Depends, FastAPI, HTTPException, APIRouter
-from sqlalchemy.orm import Session
+from fastapi import Depends, APIRouter
 
 from digital_auto_market_fastapi.dependencies import get_db
 from digital_auto_market_fastapi.routersapi.autoinfo_schema import AutoInfoCreate
