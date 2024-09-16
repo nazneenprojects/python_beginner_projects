@@ -1,13 +1,11 @@
 import base64
 
 from fastapi import Depends, APIRouter
-from fastapi.encoders import jsonable_encoder
 from sqlalchemy.orm import Session
 
 from digital_auto_market_fastapi.dependencies import get_db
+from digital_auto_market_fastapi.routersapi.vdetails_schema import VehicleDetails, VehicleDetailsCreate
 from digital_auto_market_fastapi.utils.database import models
-from digital_auto_market_fastapi.routersapi import vdetails_schema
-from digital_auto_market_fastapi.routersapi.vdetails_schema import VehicleTechSpec, VehicleDetails, VehicleDetailsCreate
 from digital_auto_market_fastapi.utils.database.database import engine
 
 models.Base.metadata.create_all(bind=engine)

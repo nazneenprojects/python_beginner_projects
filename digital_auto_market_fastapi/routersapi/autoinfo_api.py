@@ -1,10 +1,10 @@
 from fastapi import Depends, APIRouter
 
 from digital_auto_market_fastapi.dependencies import get_db
+from digital_auto_market_fastapi.routersapi import autoinfo_schema, autoinfo_crud
 from digital_auto_market_fastapi.routersapi.autoinfo_schema import AutoInfoCreate
 from digital_auto_market_fastapi.utils.database import models
-from digital_auto_market_fastapi.utils.database.database import SessionLocal, engine
-from digital_auto_market_fastapi.routersapi import autoinfo_schema, autoinfo_crud
+from digital_auto_market_fastapi.utils.database.database import engine
 
 # Refer ddl.py for in detail explanation
 models.Base.metadata.create_all(bind=engine)

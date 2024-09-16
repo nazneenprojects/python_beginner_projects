@@ -1,8 +1,8 @@
 from sqlalchemy import Column, Integer, String, Boolean, CheckConstraint, Numeric, VARBINARY, NVARCHAR, ForeignKey
 from sqlalchemy.orm import relationship
 
-from digital_auto_market_fastapi.routersapi.vdetails_schema import VehicleDetails
 from digital_auto_market_fastapi.utils.database.database import Base
+
 
 class UserInDB(Base):
     __tablename__ = "users"

@@ -1,8 +1,7 @@
 import base64
-from traceback import print_tb
+from typing import Optional
 
 from pydantic import BaseModel, Field
-from typing import Optional, List, TYPE_CHECKING
 
 
 class VehicleTechSpec(BaseModel):
