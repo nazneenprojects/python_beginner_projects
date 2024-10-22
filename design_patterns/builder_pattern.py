@@ -130,3 +130,80 @@ def create_account(director):
     account = director.get_account()
   
     return account
+# by chatgpt
+
+class Director():
+    """Director"""
+    def __init__(self, builder):
+        self._builder = builder 
+        
+    def construct_account(self):
+        # Follow the steps to construct the account
+        self._builder.create_new_account()
+        self._builder.add_type()
+        self._builder.add_id()
+        self._builder.add_clearance()
+
+    def get_account(self):
+        # Return the fully constructed account
+        return self._builder.account
+
+
+class Builder():
+    """Abstract Builder"""
+    def __init__(self):
+        self.account = None 
+        
+    def create_new_account(self):
+        # Create a new account object (product)
+        self.account = Account()
+
+
+class StudentAccountBuilder(Builder):
+    """Concrete Builder --> builds parts and assembles them"""
+    
+    def add_type(self):
+        # Set the type of account
+        self.account.type = "student"
+
+    def add_id(self):
+        # Set the id of the account
+        self.account.id = "123"
+
+    def add_clearance(self):
+        # Set the clearance level of the account
+        self.account.clearance = "middle"
+
+
+class Account():
+    """Product"""
+    def __init__(self):
+        # Initialize account attributes to None
+        self.type = None
+        self.id = None
+        self.clearance = None
+        
+    def __eq__(self, other):
+        # Check equality by comparing type and id
+        return (self.type, self.id) == (other.type, other.id)
+
+    def __str__(self):
+        # Return a string representation of the account
+        return '{} | {} | {}'.format(self.type, self.id, self.clearance)
+
+
+def create_account(director):
+    # Construct the account using the Director
+    director.construct_account()
+    # Return the constructed account
+    account = director.get_account()
+    return account
+
+
+# Usage example
+builder = StudentAccountBuilder()
+director = Director(builder)
+account = create_account(director)
+
+# Output the result
+print(account)
