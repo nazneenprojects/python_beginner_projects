@@ -126,5 +126,7 @@ class Account():
         return '{} | {} | {}'.format(self.type, self.id, self.clearance)
 
 def create_account(director):
-    # Your code goes here
-    return None
+    director.add_account()
+    account = director.get_account()
+  
+    return account
