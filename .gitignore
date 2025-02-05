@@ -39,6 +39,7 @@ MANIFEST
 *.spec
 
 .idea
+.env
 
 # Installer logs
 pip-log.txt
